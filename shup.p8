@@ -159,23 +159,13 @@ function draw_game()
 	spr(ship.spr,ship.x,ship.y)
 	spr(ship.flamespr,ship.x,ship.y+8)
 
-    for i=1,#bullets do
-        --bullets[i].y-=bullets[i].speed
-        --bullets[i].muzzle-=1
-    end
 
     for i=#bullets,1,-1 do  -- iterate backwards so del() doesn't skip entries
         local b=bullets[i]
         if b.active then
-
-            --bullets[i].muzzle-=1
-
-            spr(bulletspr,b.x,b.y)
+            spr(bulletspr,b.x,b.y) -- draw bullet
             if b.muzzle > 0 then
-                --circfill(b.x+3,b.y-2,b.muzzle,7)
-                --circfill(b.x+3, b.y-2, 4, 8)
-                circfill(ship.x+3, ship.y-5, b.muzzle, 7)
-                 print(b.muzzle,0,0,7)
+                circfill(ship.x+3, ship.y-5, b.muzzle, 7) -- draw muzzle flash
             end
         end
     end
